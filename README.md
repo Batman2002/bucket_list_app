@@ -1,6 +1,9 @@
 # bucket_list_app
 
-A new Flutter project.
+A new Flutter project on Bucket List.
+This app should let you add, check out and remind after every certain specified interval of time about the remaining tasks on your bucket list.
+Can also work as a reminder app.
+Will give short motivational quotes that help brighten up your day through notification.
 
 ## Getting Started
 
