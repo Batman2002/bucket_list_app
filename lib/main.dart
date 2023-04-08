@@ -8,8 +8,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Bucket List',
-      theme: ThemeData(primaryColor: Color.fromARGB(255, 9, 9, 9)),
       home: Homepage(),
     );
   }
