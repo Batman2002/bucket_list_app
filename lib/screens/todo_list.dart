@@ -1,6 +1,7 @@
 // import 'package:path/path.dart' as Path;
 
 import 'package:bucket_list_app/colors.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Todolist extends StatefulWidget {
@@ -24,7 +25,8 @@ class _todoState extends State<Todolist> {
     super.dispose();
   }
 
-  List namesarr = [];
+  Map<String, bool> namesarr = {};
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,11 +38,11 @@ class _todoState extends State<Todolist> {
           child: ListView.builder(
         itemBuilder: (context, index) {
           return CheckboxListTile(
-            value: namesarr[index]['value'],
-            title: Text(namesarr[index]),
+            value: namesarr[namesarr.keys.toList()[index]],
+            title: Text(namesarr.keys.toList()[index]),
             onChanged: (bool? value) {
               setState(() {
-                namesarr[index]['value'] = value!;
+                namesarr[namesarr.keys.toList()[index]] = value!;
               });
             },
           );
@@ -57,8 +59,9 @@ class _todoState extends State<Todolist> {
             if (name == null || name.isEmpty) return;
 
             setState(() {
-              namesarr.add(name);
-              // namesarr['value'] = false;
+              this.name = name;
+              final ele = <String, bool>{this.name: false};
+              namesarr.addEntries(ele.entries);
             });
           },
           child: const Text('Add item')),
