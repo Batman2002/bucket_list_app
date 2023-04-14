@@ -26,18 +26,6 @@ AppBar _appBar() {
     backgroundColor: grey,
     title: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.menu, color: black),
-        ),
-        IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.edit,
-              color: blue,
-            ))
-      ],
     ),
   );
 }

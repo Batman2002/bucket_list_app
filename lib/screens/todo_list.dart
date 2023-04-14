@@ -37,15 +37,25 @@ class _todoState extends State<Todolist> {
       Expanded(
           child: ListView.builder(
         itemBuilder: (context, index) {
-          return CheckboxListTile(
-            value: namesarr[namesarr.keys.toList()[index]],
-            title: Text(namesarr.keys.toList()[index]),
-            onChanged: (bool? value) {
-              setState(() {
-                namesarr[namesarr.keys.toList()[index]] = value!;
-              });
-            },
-          );
+          return Container(
+              margin: EdgeInsets.only(bottom: 5, top: 5),
+              child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      side: BorderSide(color: black)),
+                  elevation: 16,
+                  child: CheckboxListTile(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    tileColor: Color.fromARGB(255, 159, 173, 188),
+                    value: namesarr[namesarr.keys.toList()[index]],
+                    title: Text(namesarr.keys.toList()[index]),
+                    onChanged: (bool? value) {
+                      setState(() {
+                        namesarr[namesarr.keys.toList()[index]] = value!;
+                      });
+                    },
+                  )));
         },
         itemCount: namesarr.length,
       )),
