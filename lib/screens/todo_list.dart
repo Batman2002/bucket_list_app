@@ -1,14 +1,15 @@
 // import 'package:path/path.dart' as Path;
 
 import 'package:bucket_list_app/colors.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Todolist extends StatefulWidget {
+  const Todolist({super.key});
   @override
   State<StatefulWidget> createState() => _todoState();
 }
 
+// ignore: camel_case_types
 class _todoState extends State<Todolist> {
   String name = '';
   late TextEditingController controller;
@@ -30,39 +31,35 @@ class _todoState extends State<Todolist> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-            child: Column(children: [
-      // Row(
-      // children: [
-      Expanded(
-          child: ListView.builder(
-        itemBuilder: (context, index) {
-          return Container(
-              margin: EdgeInsets.only(bottom: 5, top: 5),
-              child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      side: BorderSide(color: black)),
-                  elevation: 16,
-                  child: CheckboxListTile(
+      body: Column(children: <Widget>[
+        Expanded(
+            child: ListView.builder(
+          itemBuilder: (context, index) {
+            return Container(
+                margin: const EdgeInsets.only(bottom: 5, top: 5),
+                child: Card(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    tileColor: Color.fromARGB(255, 159, 173, 188),
-                    value: namesarr[namesarr.keys.toList()[index]],
-                    title: Text(namesarr.keys.toList()[index]),
-                    onChanged: (bool? value) {
-                      setState(() {
-                        namesarr[namesarr.keys.toList()[index]] = value!;
-                      });
-                    },
-                  )));
-        },
-        itemCount: namesarr.length,
-      )),
-      // ],
-      // ),
-      const SizedBox(height: 16),
-      ElevatedButton(
+                        borderRadius: BorderRadius.circular(15),
+                        side: const BorderSide(color: black)),
+                    elevation: 16,
+                    child: CheckboxListTile(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      tileColor: const Color.fromARGB(255, 204, 212, 220),
+                      value: namesarr[namesarr.keys.toList()[index]],
+                      title: Text(namesarr.keys.toList()[index]),
+                      onChanged: (bool? value) {
+                        setState(() {
+                          namesarr[namesarr.keys.toList()[index]] = value!;
+                        });
+                      },
+                    )));
+          },
+          itemCount: namesarr.length,
+        )),
+        const SizedBox(height: 16),
+      ]),
+      floatingActionButton: IconButton(
           onPressed: () async {
             final name = await openpopup(context);
 
@@ -74,10 +71,9 @@ class _todoState extends State<Todolist> {
               namesarr.addEntries(ele.entries);
             });
           },
-          child: const Text('Add item')),
-    ])
-            // )
-            ));
+          icon: const Icon(Icons.add_box_rounded)),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+    );
   }
 
   Future<String?> openpopup(BuildContext context) => showDialog<String>(

@@ -14,14 +14,31 @@ class HomeState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: grey,
-      appBar: _appBar(),
-      body: Todolist(),
+      body:
+          Container(
+        padding: const EdgeInsets.all(20),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("images/c.JPG"),
+              fit: BoxFit.fitWidth,
+              alignment: Alignment.topLeft),
+        ),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const <Widget>[
+              SizedBox(height: 30),
+              SizedBox(height: 160,),
+              Flexible(child: Todolist())
+          ]
+        ),
+      ),
     );
   }
 }
 
 AppBar _appBar() {
   return AppBar(
+    toolbarHeight: 200,
     elevation: 0,
     backgroundColor: grey,
     title: Row(
