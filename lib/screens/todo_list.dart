@@ -81,8 +81,6 @@ class _todoState extends State<Todolist> {
                             setState(() {
                               namesarr[namesarr.keys.toList()[index]] = value!;
                               enarr = json.encode(namesarr);
-                              // print(namesarr);
-                              print(enarr);
                               setListval();
                             });
                           },
@@ -148,6 +146,7 @@ class _todoState extends State<Todolist> {
 
   void deleteval() {
     namesarr.removeWhere((key, value) => value == true);
+    enarr = json.encode(namesarr);
     setListval();
   }
 }
