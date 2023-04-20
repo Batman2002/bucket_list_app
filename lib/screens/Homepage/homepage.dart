@@ -14,35 +14,42 @@ class HomeState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: grey,
-      body:
-          Container(
-        padding: const EdgeInsets.all(20),
+      body: Container(
+        padding: const EdgeInsets.all(0),
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("images/c.JPG"),
+              image: AssetImage("assets/images/c.JPG"),
               fit: BoxFit.fitWidth,
               alignment: Alignment.topLeft),
         ),
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const <Widget>[
-              SizedBox(height: 30),
-              SizedBox(height: 160,),
+            children: <Widget>[
+              SizedBox(
+                height: 90,
+              ),
+              TweenAnimationBuilder(
+                child: SizedBox(
+                    child: Text(
+                      'Bucket List',
+                      style: TextStyle(
+                          fontSize: 45,
+                          fontWeight: FontWeight.w900,
+                          color: Color.fromARGB(255, 0, 97, 253)),
+                    ),
+                    height: 140),
+                tween: Tween<double>(begin: 0, end: 1),
+                duration: Duration(seconds: 3),
+                builder: (BuildContext context, double _val, Widget? child) {
+                  return Opacity(
+                    opacity: _val,
+                    child: child,
+                  );
+                },
+              ),
               Flexible(child: Todolist())
-          ]
-        ),
+            ]),
       ),
     );
   }
-}
-
-AppBar _appBar() {
-  return AppBar(
-    toolbarHeight: 200,
-    elevation: 0,
-    backgroundColor: grey,
-    title: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    ),
-  );
 }
